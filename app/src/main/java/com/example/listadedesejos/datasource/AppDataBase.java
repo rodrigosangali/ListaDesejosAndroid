@@ -58,6 +58,7 @@ public class AppDataBase extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 lista = new Lista();
+                lista.setId(cursor.getInt(cursor.getColumnIndex(ListaModel.ID)));
                 lista.setProduto(cursor.getString(cursor.getColumnIndex(ListaModel.PRODUTO)));
                 lista.setValor(cursor.getDouble(cursor.getColumnIndex(ListaModel.VALOR)));
                 lista.setData(cursor.getString(cursor.getColumnIndex(ListaModel.DATA)));
