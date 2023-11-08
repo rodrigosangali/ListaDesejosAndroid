@@ -26,7 +26,6 @@ public class ListaController extends AppDataBase {
         dadoDoObjeto.put(ListaModel.VALOR, lista.getValor());
         dadoDoObjeto.put(ListaModel.DATA, lista.getData());
 
-
         return insert(ListaModel.TABELA, dadoDoObjeto);
 
     }

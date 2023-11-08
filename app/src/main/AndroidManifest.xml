@@ -13,6 +13,9 @@
             android:name=".view.ConsultarDesejo"
             android:exported="false" />
         <activity
+            android:name=".view.AlterarDesejo"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

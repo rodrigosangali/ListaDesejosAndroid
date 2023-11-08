@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,11 +16,13 @@ import com.example.listadedesejos.model.Lista;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    // Uma classe que extend AppBase que extend da class SQLiteOpenHelper
     ListaController listaController;
     Lista lista;
+
+    //Referencia dos objetos na tela
     EditText editText, editTextValor;
-    Button buttonInsert, buttonConsultarDesejo;
+    Button buttonInsert, buttonConsultarDesejo, buttonAlterarDesejo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         editTextValor = findViewById(R.id.editTextTextValor);
         buttonInsert = findViewById(R.id.buttonInsert);
         buttonConsultarDesejo= findViewById(R.id.buttonConsultarDesejo);
+        buttonAlterarDesejo = findViewById(R.id.buttonAlterarDesejo);
 
 
-
+        //Acao quando clica no botao inserir
         buttonInsert.setOnClickListener(v -> {
 
             lista = new Lista();
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             lista.setValor(Double.parseDouble(editTextValor.getText().toString()));
             lista.setData("08-11-2021");
 
+            //Classe utiliza o objeto ContentValue para manipular os dados
             listaController = new ListaController(getApplicationContext());
 
             // Inclui os dados
@@ -56,13 +60,17 @@ public class MainActivity extends AppCompatActivity {
             editTextValor.setText(null);
         });
 
+        //Acao quando clica no botao consultar
         buttonConsultarDesejo.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ConsultarDesejo.class);
             startActivity(intent);
         });
 
-
-
+        //Criar o botao alterar
+        buttonAlterarDesejo.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AlterarDesejo.class);
+            startActivity(intent);
+        });
 
     }
 }
